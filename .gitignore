@@ -15,20 +15,13 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# Data
+# Large Data (raw downloads and large processed tables)
 data/raw/*
 !data/raw/.gitkeep
 data/downloads/*
 !data/downloads/.gitkeep
 data/processed/*
 !data/processed/.gitkeep
-
-# Artifacts & Checkpoints
-artifacts/checkpoints/*
-!artifacts/checkpoints/.gitkeep
-artifacts/check_samples/*
-!artifacts/check_samples/.gitkeep
-artifacts/*.json
 
 # Streamlit
 .streamlit/

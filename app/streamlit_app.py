@@ -114,26 +114,6 @@ selected_label = st.sidebar.selectbox(
 key, data_path = DATASETS[selected_label]
 ckpt_path = ROOT / "artifacts/checkpoints" / f"machsense_{key}.pt"
 
-st.title("⚙️ MachSense — Predictive Health & RUL Intelligence")
-st.markdown("Unified physics-informed multi-task deep learning architecture evaluating machine health, remaining useful life quantiles, and anomaly detection.")
-
-if not ckpt_path.exists():
-    st.warning(f"### Model checkpoint for **{selected_label}** not found.")
-    st.info(f"""
-    To generate the trained checkpoint for **{key}**:
-    - **Paderborn**: Run the `notebooks/01_Paderborn_End_to_End.ipynb` notebook.
-    - **NASA C-MAPSS / FEMTO**: Run the `notebooks/02_Benchmark_End_to_End.ipynb` notebook with `BENCHMARK = '{key}'`.
-    
-    *Alternatively, select an already trained dataset from the sidebar dropdown.*
-    """)
-    st.stop()
-
-try:
-    checkpoint = check_checkpoint(ckpt_path)
-except Exception as e:
-    st.error(f"Error loading model checkpoint: {e}")
-    st.stop()
-
 st.sidebar.markdown("---")
 st.sidebar.subheader("Data Input Mode")
 mode = st.sidebar.radio(
@@ -146,22 +126,52 @@ try:
     if mode == "Saved validation sample":
         sample_file = ROOT / "artifacts/check_samples" / f"{key}_validation_input.csv"
         if not sample_file.exists():
-            st.sidebar.error("Validation CSV not found. Please run the notebook training step.")
-            st.stop()
-        df = pd.read_csv(sample_file)
+            st.sidebar.warning(f"Validation sample for {key} not found. Please upload a custom CSV or run training.")
+        else:
+            df = pd.read_csv(sample_file)
     elif mode == "Processed dataset":
         if not data_path.exists():
-            st.sidebar.error(f"Processed dataset not found at `{data_path}`. Run feature extraction first.")
-            st.stop()
-        df = pd.read_parquet(data_path)
+            st.sidebar.warning(f"Processed dataset not found at `{data_path.name}`. Run feature extraction or choose 'Saved validation sample'.")
+        else:
+            df = pd.read_parquet(data_path)
     else:
         uploaded_file = st.sidebar.file_uploader("Upload model input CSV", type=["csv"])
-        if uploaded_file is None:
-            st.info("👆 Please upload a CSV file with sensor/operating features to begin inference, or choose 'Saved validation sample'.")
-            st.stop()
-        df = pd.read_csv(uploaded_file)
+        if uploaded_file is not None:
+            df = pd.read_csv(uploaded_file)
+        else:
+            st.info("👆 Please upload a CSV file with sensor/operating features in the sidebar to begin inference, or choose 'Saved validation sample'.")
 except Exception as exc:
     st.error(f"Failed to load dataset: {exc}")
+
+st.title("⚙️ MachSense — Predictive Health & RUL Intelligence")
+st.markdown("Unified physics-informed multi-task deep learning architecture evaluating machine health, remaining useful life quantiles, and anomaly detection.")
+
+if not ckpt_path.exists():
+    st.warning(f"### Model checkpoint for **{selected_label}** not found.")
+    st.info(f"""
+    To generate the trained checkpoint for **{key}**:
+    - **Paderborn**: Run the `notebooks/01_Paderborn_End_to_End.ipynb` notebook.
+    - **NASA C-MAPSS / FEMTO**: Run the `notebooks/02_Benchmark_End_to_End.ipynb` notebook with `BENCHMARK = '{key}'`.
+    
+    *Alternatively, select an already trained dataset from the sidebar dropdown.*
+    """)
+    custom_ckpt = st.file_uploader("Or upload a custom PyTorch model checkpoint (.pt)", type=["pt"])
+    if custom_ckpt:
+        ckpt_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(ckpt_path, "wb") as f:
+            f.write(custom_ckpt.read())
+        st.success("Uploaded checkpoint successfully! Reloading...")
+        st.rerun()
+    st.stop()
+
+try:
+    checkpoint = check_checkpoint(ckpt_path)
+except Exception as e:
+    st.error(f"Error loading model checkpoint: {e}")
+    st.stop()
+
+if df is None:
+    st.info("👆 Please select or upload input data from the sidebar to view inference predictions.")
     st.stop()
 
 if "bearing_id" not in df.columns:

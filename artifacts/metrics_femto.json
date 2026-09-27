@@ -1,0 +1,168 @@
+{
+  "dataset": "femto",
+  "validation_bearing": "Bearing3_2",
+  "n_train_bearings": 5,
+  "features": [
+    "h_rms",
+    "v_rms"
+  ],
+  "condition_cols": [
+    "speed",
+    "load"
+  ],
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.14375962570185116,
+      "val_loss": 0.0673184061599015,
+      "val_rul_rmse_norm": 0.19716780111641719
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.10277663073748931,
+      "val_loss": 0.07057159423679854,
+      "val_rul_rmse_norm": 0.19296634012154984
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.09671415307644682,
+      "val_loss": 0.07875758279763644,
+      "val_rul_rmse_norm": 0.22232530502891143
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.09207594234880298,
+      "val_loss": 0.07628375110193271,
+      "val_rul_rmse_norm": 0.2216606464033791
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.08819579204393961,
+      "val_loss": 0.08894764706121748,
+      "val_rul_rmse_norm": 0.266808379701223
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.08485636332988075,
+      "val_loss": 0.12582575585415115,
+      "val_rul_rmse_norm": 0.27394767315262725
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.0837211019066383,
+      "val_loss": 0.10274458758125257,
+      "val_rul_rmse_norm": 0.236106200232117
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.08274660190998014,
+      "val_loss": 0.11211081729525357,
+      "val_rul_rmse_norm": 0.2526865405346151
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.08313052655096506,
+      "val_loss": 0.1190314110720632,
+      "val_rul_rmse_norm": 0.24164541538529322
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.082660314909761,
+      "val_loss": 0.11036276407725182,
+      "val_rul_rmse_norm": 0.24732049912357593
+    },
+    {
+      "epoch": 11,
+      "train_loss": 0.08319522967577644,
+      "val_loss": 0.12106272563412415,
+      "val_rul_rmse_norm": 0.267235801574985
+    },
+    {
+      "epoch": 12,
+      "train_loss": 0.08252018503325895,
+      "val_loss": 0.1211787310164811,
+      "val_rul_rmse_norm": 0.2578588225583892
+    },
+    {
+      "epoch": 13,
+      "train_loss": 0.08167312516309425,
+      "val_loss": 0.12273117512538659,
+      "val_rul_rmse_norm": 0.2545612053009694
+    },
+    {
+      "epoch": 14,
+      "train_loss": 0.08200788448115909,
+      "val_loss": 0.123096861862647,
+      "val_rul_rmse_norm": 0.25122459371629224
+    },
+    {
+      "epoch": 15,
+      "train_loss": 0.0819054325435487,
+      "val_loss": 0.13083284578995028,
+      "val_rul_rmse_norm": 0.26965242134082823
+    },
+    {
+      "epoch": 16,
+      "train_loss": 0.08218368748851473,
+      "val_loss": 0.12482890569192556,
+      "val_rul_rmse_norm": 0.2575277217426999
+    },
+    {
+      "epoch": 17,
+      "train_loss": 0.08226665935393496,
+      "val_loss": 0.12533980019538854,
+      "val_rul_rmse_norm": 0.26152726380361946
+    },
+    {
+      "epoch": 18,
+      "train_loss": 0.0817997167327942,
+      "val_loss": 0.12077217031066394,
+      "val_rul_rmse_norm": 0.2577662825460222
+    },
+    {
+      "epoch": 19,
+      "train_loss": 0.08252527465146232,
+      "val_loss": 0.12070435472759442,
+      "val_rul_rmse_norm": 0.24771554590389405
+    },
+    {
+      "epoch": 20,
+      "train_loss": 0.08198968765214293,
+      "val_loss": 0.12348810329440221,
+      "val_rul_rmse_norm": 0.263344463634969
+    },
+    {
+      "epoch": 21,
+      "train_loss": 0.08204180315593491,
+      "val_loss": 0.12171959939102332,
+      "val_rul_rmse_norm": 0.2551945204011486
+    },
+    {
+      "epoch": 22,
+      "train_loss": 0.08190726839566297,
+      "val_loss": 0.12528245890540862,
+      "val_rul_rmse_norm": 0.2690199354012773
+    },
+    {
+      "epoch": 23,
+      "train_loss": 0.0822900146411986,
+      "val_loss": 0.12265022118478569,
+      "val_rul_rmse_norm": 0.2530219120712884
+    },
+    {
+      "epoch": 24,
+      "train_loss": 0.08179027178327353,
+      "val_loss": 0.11676916976769765,
+      "val_rul_rmse_norm": 0.26196903848062236
+    },
+    {
+      "epoch": 25,
+      "train_loss": 0.0819091582489213,
+      "val_loss": 0.12178651935685036,
+      "val_rul_rmse_norm": 0.25930996507209325
+    }
+  ],
+  "best_val_loss": 0.0673184061599015,
+  "rul_scale": 2802.0,
+  "checkpoint": "C:\\Users\\rahul\\Downloads\\MachSense_Model_v4\\MachSense_Model_v4\\artifacts\\checkpoints\\machsense_femto.pt"
+}

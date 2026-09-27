@@ -1,0 +1,135 @@
+{
+  "dataset": "paderborn",
+  "validation_bearing": "B17",
+  "n_train_bearings": 16,
+  "features": [
+    "fft_band_00",
+    "fft_band_01",
+    "fft_band_02",
+    "fft_band_03",
+    "fft_band_04",
+    "fft_band_05",
+    "fft_band_06",
+    "fft_band_07",
+    "fft_band_08",
+    "fft_band_09",
+    "fft_band_10",
+    "fft_band_11",
+    "fft_band_12",
+    "fft_band_13",
+    "fft_band_14",
+    "fft_band_15",
+    "fft_band_16",
+    "fft_band_17",
+    "fft_band_18",
+    "fft_band_19",
+    "setDynLoad / N",
+    "peak_dynLoad / N",
+    "setStatLoad / N",
+    "meanAbs_statLoad / N",
+    "setSpeed / rpm",
+    "meanAbs_speed / rpm",
+    "temp_1",
+    "temp_2",
+    "temp_3"
+  ],
+  "condition_cols": [
+    "speed",
+    "load"
+  ],
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.08541915784405003,
+      "val_loss": 0.14702983676681858,
+      "val_rul_rmse_norm": 0.20047673647456554
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.03667407386676038,
+      "val_loss": 0.2614050246554719,
+      "val_rul_rmse_norm": 0.23150898240994308
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.02902813279889914,
+      "val_loss": 0.16581898786612517,
+      "val_rul_rmse_norm": 0.20412058003861588
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.02547956417455974,
+      "val_loss": 0.20523109414873744,
+      "val_rul_rmse_norm": 0.2574869714131319
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.02305490829187858,
+      "val_loss": 0.18610249274581142,
+      "val_rul_rmse_norm": 0.22016609088977881
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.021346253763178058,
+      "val_loss": 0.19418778424784983,
+      "val_rul_rmse_norm": 0.24820567146309072
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.020950822204775624,
+      "val_loss": 0.15479374240488697,
+      "val_rul_rmse_norm": 0.17800470026248
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.019481035489020044,
+      "val_loss": 0.2271714647846109,
+      "val_rul_rmse_norm": 0.2444286096765684
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.018184189875272923,
+      "val_loss": 0.18309447945222346,
+      "val_rul_rmse_norm": 0.23055942828667994
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.01734732398665791,
+      "val_loss": 0.14304577519555065,
+      "val_rul_rmse_norm": 0.15213254224981582
+    },
+    {
+      "epoch": 11,
+      "train_loss": 0.0175749133652476,
+      "val_loss": 0.17415337537872722,
+      "val_rul_rmse_norm": 0.22275719980675437
+    },
+    {
+      "epoch": 12,
+      "train_loss": 0.01636477210081484,
+      "val_loss": 0.16946111125706215,
+      "val_rul_rmse_norm": 0.20175425963587745
+    },
+    {
+      "epoch": 13,
+      "train_loss": 0.016678346350158572,
+      "val_loss": 0.1710089388683703,
+      "val_rul_rmse_norm": 0.22043377345123116
+    },
+    {
+      "epoch": 14,
+      "train_loss": 0.015344793581041722,
+      "val_loss": 0.16955155381084194,
+      "val_rul_rmse_norm": 0.20188069952968674
+    },
+    {
+      "epoch": 15,
+      "train_loss": 0.015017572652503102,
+      "val_loss": 0.20758335115994223,
+      "val_rul_rmse_norm": 0.2557752112298293
+    }
+  ],
+  "best_val_loss": 0.14304577519555065,
+  "rul_scale": 22566.0,
+  "checkpoint": "C:\\Users\\rahul\\Downloads\\MachSense_Model_v4\\MachSense_Model_v4\\artifacts\\checkpoints\\machsense_paderborn.pt"
+}
