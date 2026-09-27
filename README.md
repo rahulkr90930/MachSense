@@ -1,6 +1,31 @@
-# MachSense — professional 2-notebook workflow
+# MachSense — Predictive Maintenance & RUL Intelligence
 
 MachSense is an AI-powered predictive-maintenance platform combining a condition-aware temporal model, a continuous Health Index, probabilistic RUL, reconstruction-based anomaly evidence, lifecycle staging, and a maintenance signal.
+
+## 🚀 Quickstart: Clone & Run
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/rahulkr90930/MachSense.git
+cd MachSense
+
+# 2. Create and activate a virtual environment (Python 3.11 recommended)
+python -m venv .venv
+# On Windows (PowerShell):
+.venv\Scripts\Activate.ps1
+# On Windows (Command Prompt):
+.venv\Scripts\activate.bat
+# On Linux/macOS:
+source .venv/bin/activate
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. Run the interactive Streamlit Dashboard or Notebooks
+python run.py app           # Launch Streamlit Web UI
+python run.py paderborn     # Run Primary Paderborn 17-Bearing Workflow
+python run.py benchmark     # Run FEMTO & C-MAPSS Benchmarks
+```
 
 ## Dataset strategy
 
