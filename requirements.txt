@@ -1,0 +1,14 @@
+numpy
+pandas
+scipy
+scikit-learn
+matplotlib
+pyyaml
+tqdm
+pyarrow
+torch
+streamlit
+joblib
+jupyter
+nbformat
+pytest
