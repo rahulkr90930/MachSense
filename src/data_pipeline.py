@@ -209,5 +209,7 @@ def download_cmapss_fd001(dest):
     dest.mkdir(parents=True,exist_ok=True)
     for name in ('train_FD001.txt','test_FD001.txt','RUL_FD001.txt'): download_file(f'{CMAPSS_BASE_URL}/{name}',dest/name)
 
+build_cmapss_features = build_cmapss_fd001
+
 def create_manifest(entries,path):
     path.parent.mkdir(parents=True,exist_ok=True); path.write_text(json.dumps(entries,indent=2),encoding='utf-8')

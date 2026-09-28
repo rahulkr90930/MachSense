@@ -2,10 +2,17 @@ import numpy as np
 import pandas as pd
 import torch
 from pathlib import Path
-from src.model import MachSenseNet
-from src.features import condition_columns, choose_numeric_features, standardize
-from src.validation import audit_table, assert_no_leakage, check_checkpoint
-from src.experiment import predict_series, load_checkpoint
+from src.engine import (
+    MachSenseNet,
+    condition_columns,
+    choose_numeric_features,
+    standardize,
+    audit_table,
+    assert_no_leakage,
+    check_checkpoint,
+    predict_series,
+    load_checkpoint,
+)
 
 def test_dynamic_model():
     m = MachSenseNet(6, 3, hidden=32, layers=2, cond_dim=8)
@@ -31,7 +38,7 @@ def test_schema():
     assert_no_leakage(['f1', 'f2'])
 
 def test_checkpoints_and_predict():
-    for ds in ['paderborn', 'cmapss']:
+    for ds in ['paderborn', 'femto', 'cmapss']:
         ckpt_path = Path(f'artifacts/checkpoints/machsense_{ds}.pt')
         if ckpt_path.exists():
             ckpt = check_checkpoint(ckpt_path)

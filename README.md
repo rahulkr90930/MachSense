@@ -24,7 +24,8 @@ pip install -r requirements.txt
 # 4. Run the interactive Streamlit Dashboard or Notebooks
 python run.py app           # Launch Streamlit Web UI
 python run.py paderborn     # Run Primary Paderborn 17-Bearing Workflow
-python run.py benchmark     # Run FEMTO & C-MAPSS Benchmarks
+python run.py femto         # Run FEMTO / PRONOSTIA Bearing Benchmark
+python run.py cmapss        # Run NASA C-MAPSS FD001 Turbofan Benchmark
 ```
 
 ## Dataset strategy
@@ -43,27 +44,23 @@ C-MAPSS is a famous small turbofan-engine RUL benchmark. NASA describes the rele
 
 **The datasets are NOT concatenated.** Paderborn/FEMTO are bearing vibration systems; C-MAPSS is a simulated turbofan-engine system. Pooling their raw rows would mix incompatible sensor semantics and units. Instead, we train the same MachSense formulation separately and compare its behavior.
 
-## Exactly two notebooks
+## 📓 Notebooks-First Architecture
 
-### `01_Paderborn_End_to_End.ipynb`
+Each dataset has its own **100% self-contained, interactive Jupyter Notebook**. Anyone working on a dataset can train models, tweak hyperparameters, modify neural network layers, adjust loss functions, and visualize results entirely inside that notebook without navigating or editing external `.py` files:
 
-One notebook from start to finish:
+### [`01_Paderborn_End_to_End.ipynb`](file:///notebooks/01_Paderborn_End_to_End.ipynb)
+- **Primary Bearing Workflow**: 17 run-to-failure bearing experiments under time-varying speed and load.
+- **In-Notebook Implementation**: Inline temporal sequence dataset, Condition-FiLM TCN network, multi-task pinball quantile loss, training loop with epoch convergence, and 3-panel prognostic trajectory plots.
 
-`download → preprocess → audit → train → evaluate → export check CSV`
+### [`02_FEMTO_End_to_End.ipynb`](file:///notebooks/02_FEMTO_End_to_End.ipynb)
+- **Independent Bearing Benchmark**: Accelerated run-to-failure bearing testing under dynamic radial load (IEEE PHM 2012).
+- **In-Notebook Implementation**: Dedicated train/validation splits, inline PyTorch model, complete training & anomaly calibration loop, and uncertainty degradation fan charts.
 
-It also contains the optional raw B01 audit.
+### [`03_CMAPSS_End_to_End.ipynb`](file:///notebooks/03_CMAPSS_End_to_End.ipynb)
+- **Turbofan Degradation Benchmark**: NASA C-MAPSS FD001 (100 run-to-failure training engines, 100 test engines).
+- **In-Notebook Implementation**: Piecewise linear RUL targets, inline PyTorch training loop, and **full benchmark evaluation on all 100 test engines** against ground-truth RUL (computing Test RMSE and NASA Scoring function $S$).
 
-### `02_Benchmark_End_to_End.ipynb`
-
-One benchmark notebook with a single switch:
-
-```python
-BENCHMARK = "femto"
-# or
-BENCHMARK = "cmapss"
-```
-
-It performs the complete workflow for the selected benchmark.
+*(The `src/` directory serves as an underlying library powering the Streamlit web dashboard and automated smoke tests).*
 
 ## Why C-MAPSS is a benchmark, not a combined training source
 

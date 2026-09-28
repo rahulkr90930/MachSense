@@ -8,8 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from src.experiment import load_checkpoint, predict_series
-from src.validation import check_checkpoint
+from src.engine import load_checkpoint, predict_series, check_checkpoint
 
 st.set_page_config(
     page_title="MachSense — Machine Health & Predictive Maintenance",
@@ -126,6 +125,8 @@ try:
     if mode == "Saved validation sample":
         sample_file = ROOT / "artifacts/check_samples" / f"{key}_validation_input.csv"
         if not sample_file.exists():
+            sample_file = ROOT / "sample_inputs" / f"{key}_demo_input.csv"
+        if not sample_file.exists():
             st.sidebar.warning(f"Validation sample for {key} not found. Please upload a custom CSV or run training.")
         else:
             df = pd.read_csv(sample_file)
@@ -150,8 +151,9 @@ if not ckpt_path.exists():
     st.warning(f"### Model checkpoint for **{selected_label}** not found.")
     st.info(f"""
     To generate the trained checkpoint for **{key}**:
-    - **Paderborn**: Run the `notebooks/01_Paderborn_End_to_End.ipynb` notebook.
-    - **NASA C-MAPSS / FEMTO**: Run the `notebooks/02_Benchmark_End_to_End.ipynb` notebook with `BENCHMARK = '{key}'`.
+    - **Paderborn**: Run `notebooks/01_Paderborn_End_to_End.ipynb`
+    - **FEMTO**: Run `notebooks/02_FEMTO_End_to_End.ipynb`
+    - **NASA C-MAPSS**: Run `notebooks/03_CMAPSS_End_to_End.ipynb`
     
     *Alternatively, select an already trained dataset from the sidebar dropdown.*
     """)
